@@ -14,11 +14,14 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Chip from "@mui/material/Chip";
+import Logo from "../icon.png";
+import Image from "next/image";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
-    const pages = ["About", "Schedule", "Spnsors", "FAQ", "Register"];
+    const pages = ["About", "Schedule", "Sponsors", "FAQ", "Register"];
     const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -47,16 +50,27 @@ const Navbar = (props: Props) => {
         <AppBar className="bg-black" position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon
-                        sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-                    />
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+                    >
+                        <Image
+                            width={64}
+                            height={64}
+                            src={Logo.src}
+                            alt="Make UTD Logo"
+                        />
+                    </IconButton>
                     <Typography
                         variant="h4"
                         noWrap
                         component="a"
                         href="#app-bar-with-responsive-menu"
                         sx={{
-                            mr: 40,
+                            mr: 20,
                             display: { xs: "none", md: "flex" },
                             fontFamily: "monospace",
                             fontWeight: 700,
@@ -145,8 +159,14 @@ const Navbar = (props: Props) => {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
-                                
+                                sx={{
+                                    my: 2,
+                                    color: "white",
+                                    display: "block",
+                                    mx: 4,
+                                }}
+                                variant="contained"
+                                className="hover:bg-green-700 rounded-md underline"
                             >
                                 {page}
                             </Button>
