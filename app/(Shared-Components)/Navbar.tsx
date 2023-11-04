@@ -128,9 +128,20 @@ const Navbar = (props: Props) => {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon
-                        sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                    />
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        sx={{ mr: 2, display: { xs: "flex", md: "none" } }}
+                    >
+                        <Image
+                            width={64}
+                            height={64}
+                            src={Logo.src}
+                            alt="Make UTD Logo"
+                        />
+                    </IconButton>
                     <Typography
                         variant="h4"
                         noWrap
@@ -166,7 +177,7 @@ const Navbar = (props: Props) => {
                                     mx: 4,
                                 }}
                                 variant="contained"
-                                className="hover:bg-green-700 rounded-md underline"
+                                className="hover:bg-green-700 rounded-full"
                             >
                                 {page}
                             </Button>
