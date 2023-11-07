@@ -1,26 +1,40 @@
-import type { Metadata } from "next";
+import React from "react";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "./(Shared-Components)/Navbar";
+import { ConfigProvider } from "antd";
+
+import StyledComponentsRegistry from "../lib/AntdRegistry";
+
+import "@/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-    title: "Make UTD",
-    description: "Offical Website for Make UTD",
+export const metadata = {
+    title: "Make-UTD",
+    description: "Official website for Make-UTD",
 };
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    return (
-        <html lang="en">
-            <body className={inter.className}>
-                <Navbar />
-                {children}
-            </body>
-        </html>
-    );
-}
+const antDCustomizeTheme = {
+    token: {
+        colorPrimary: "#2D8B49",
+    },
+    components: {
+        Menu: {
+            darkItemBg: "#0F0F0F",
+            darkItemHoverColor: "#ff841c",
+        },
+    },
+};
+
+const RootLayout = ({ children }: React.PropsWithChildren) => (
+    <html lang="en">
+        <body className={inter.className}>
+            <StyledComponentsRegistry>
+                <ConfigProvider theme={antDCustomizeTheme}>
+                    {children}
+                </ConfigProvider>
+            </StyledComponentsRegistry>
+        </body>
+    </html>
+);
+
+export default RootLayout;
