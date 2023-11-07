@@ -1,10 +1,11 @@
 import React from "react";
 import { Inter } from "next/font/google";
 import { ConfigProvider } from "antd";
+import Navbar from "./(Shared-Components)/Navbar";
 
 import StyledComponentsRegistry from "../lib/AntdRegistry";
 
-import "@/globals.css";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
         <body className={inter.className}>
             <StyledComponentsRegistry>
                 <ConfigProvider theme={antDCustomizeTheme}>
+                    <Navbar />
                     {children}
                 </ConfigProvider>
             </StyledComponentsRegistry>
