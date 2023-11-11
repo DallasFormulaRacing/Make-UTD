@@ -2,6 +2,7 @@ import Image from "next/image";
 import tempHomeImage from "public/temp_home.png";
 import Navbar from "./(Shared-Components)/Navbar";
 import About from "./(home)/About";
+import Challenges from "./(home)/Challenges";
 
 export default function Home() {
     return (
@@ -10,7 +11,7 @@ export default function Home() {
                 <Navbar />
             </div>
             <About />
-            Something
+            <Challenges />
         </main>
     );
 }
