@@ -6,11 +6,12 @@ import Image from "next/image";
 import DFRLogo from "public/icon.png";
 import tempLogo from "public/temp_logo.png";
 import type { MenuProps } from "antd";
-import { Menu, Button } from "antd";
+import { Menu, Button, Avatar } from "antd";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     MailOutlined,
+    UserOutlined,
 } from "@ant-design/icons";
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -44,7 +45,7 @@ const items: MenuProps["items"] = [
     getItem(
         <a
             className={"navbarLink"}
-            href="#Challenges"
+            href="#challenges"
             rel="noopener noreferrer"
         >
             Challenges
@@ -53,10 +54,24 @@ const items: MenuProps["items"] = [
         null
     ),
     getItem(
-        <a className={"navbarLink"} href="#Schedule" rel="noopener noreferrer">
-            Schedule
+        <a className={"navbarLink"} href="#sponsors" rel="noopener noreferrer">
+            Sponsors
         </a>,
         "sub3",
+        null
+    ),
+    getItem(
+        <a className={"navbarLink"} href="#faq" rel="noopener noreferrer">
+            FAQ
+        </a>,
+        "sub4",
+        null
+    ),
+    getItem(
+        <a className={"navbarLink"} href="#schedule" rel="noopener noreferrer">
+            Schedule
+        </a>,
+        "sub5",
         null
     ),
 ];
@@ -65,7 +80,6 @@ const Navbar = (props: Props) => {
     const [navbarToggle, setNavbarToggle] = useState<boolean>(false);
     return (
         <nav className="navbar px-4 py-4 backdrop-blur-md">
-            
             <div className="basis-1/6 relative w-auto h-24">
                 <Link href="/" rel="noreferrer">
                     <Image
@@ -79,13 +93,17 @@ const Navbar = (props: Props) => {
                 </Link>
             </div>
 
-            <div className="ml-auto w-0 invisible md:min-w-[625px] md:visible">
+            <div className="mx-auto w-0 invisible md:min-w-[625px] md:visible">
                 <Menu
                     mode="horizontal"
                     theme="dark"
                     items={items}
-                    className="flex items-end"
+                    className="flex items-center justify-between"
                 />
+            </div>
+
+            <div className="w-0 invisible md:min-w-[50px] md:visible ml-auto mr-4">
+                <Avatar shape="circle" size="large" icon={<UserOutlined />} />
             </div>
 
             <div className="block ml-auto md:hidden">
