@@ -36,6 +36,8 @@ module.exports = {
                 "accent-green": "#2D8B49",
                 "accent-yellow": "#EDCA2C",
                 "or-10": "#ff841c",
+                "secondary-blue": "#498E94",
+                "secondary-red": "#E20000",
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
