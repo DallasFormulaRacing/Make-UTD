@@ -64,7 +64,7 @@ const items: MenuProps["items"] = [
 const Navbar = (props: Props) => {
     const [navbarToggle, setNavbarToggle] = useState<boolean>(false);
     return (
-        <nav className="flex items-center w-full bg-transparent backdrop-blur-lg backdrop-filter bg-opacity-100 text-wh-10 px-4 py-4 sticky top-0 z-10">
+        <nav className="navbar px-4 py-4 backdrop-blur-md">
             
             <div className="basis-1/6 relative w-auto h-24">
                 <Link href="/" rel="noreferrer">

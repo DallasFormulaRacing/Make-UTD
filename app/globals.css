@@ -15,3 +15,18 @@ body,
 .ant-menu-submenu-selected {
     background-color: #2d2f34 !important;
 }
+
+@layer compoenets {
+    .navbar {
+        @apply bg-opacity-90;
+        @apply backdrop-filter;
+        @apply sticky;
+        @apply top-0;
+        @apply z-10;
+        @apply text-wh-10;
+        @apply w-full;
+        @apply flex;
+        @apply items-center;
+
+    }
+}
