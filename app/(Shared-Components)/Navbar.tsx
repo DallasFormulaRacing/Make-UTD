@@ -1,232 +1,134 @@
 "use client";
 
 import React, { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import Chip from "@mui/material/Chip";
-import Logo from "../icon.png";
+import Link from "next/link";
 import Image from "next/image";
+import DFRLogo from "public/icon.png";
+import tempLogo from "public/temp_logo.png";
+import type { MenuProps } from "antd";
+import { Menu, Button, Avatar } from "antd";
+import {
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+    MailOutlined,
+    UserOutlined,
+} from "@ant-design/icons";
+
+type MenuItem = Required<MenuProps>["items"][number];
+
+function getItem(
+    label: React.ReactNode,
+    key: React.Key,
+    icon?: React.ReactNode,
+    children?: MenuItem[],
+    type?: "group"
+): MenuItem {
+    return {
+        key,
+        icon,
+        children,
+        label,
+        type,
+    } as MenuItem;
+}
 
 type Props = {};
 
+const items: MenuProps["items"] = [
+    getItem(
+        <a className={"navbarLink"} href="#about" rel="noopener noreferrer">
+            About
+        </a>,
+        "sub1",
+        null
+    ),
+    getItem(
+        <a
+            className={"navbarLink"}
+            href="#challenges"
+            rel="noopener noreferrer"
+        >
+            Challenges
+        </a>,
+        "sub2",
+        null
+    ),
+    getItem(
+        <a className={"navbarLink"} href="#sponsors" rel="noopener noreferrer">
+            Sponsors
+        </a>,
+        "sub3",
+        null
+    ),
+    getItem(
+        <a className={"navbarLink"} href="#faq" rel="noopener noreferrer">
+            FAQ
+        </a>,
+        "sub4",
+        null
+    ),
+    getItem(
+        <a className={"navbarLink"} href="#schedule" rel="noopener noreferrer">
+            Schedule
+        </a>,
+        "sub5",
+        null
+    ),
+];
+
 const Navbar = (props: Props) => {
-    const pages = ["About", "Schedule", "Sponsors", "FAQ", "Register"];
-    const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-        null
-    );
-    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-        null
-    );
-
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
+    const [navbarToggle, setNavbarToggle] = useState<boolean>(false);
     return (
-        <AppBar className="bg-black" position="static">
-            <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-                    >
-                        <Image
-                            width={64}
-                            height={64}
-                            src={Logo.src}
-                            alt="Make UTD Logo"
-                        />
-                    </IconButton>
-                    <Typography
-                        variant="h4"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 20,
-                            display: { xs: "none", md: "flex" },
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        MAKE UTD
-                    </Typography>
+        <nav className="navbar px-4 py-4 backdrop-blur-md">
+            <div className="basis-1/6 relative w-auto h-24">
+                <Link href="/" rel="noreferrer">
+                    <Image
+                        fill
+                        alt="logo"
+                        placeholder="blur"
+                        src={tempLogo}
+                        className="object-contain"
+                        style={{ clipPath: "circle()" }}
+                    />
+                </Link>
+            </div>
 
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "flex", md: "none" },
-                        }}
-                    >
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: "bottom",
-                                horizontal: "left",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "left",
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: "block", md: "none" },
-                            }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {page}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2, display: { xs: "flex", md: "none" } }}
-                    >
-                        <Image
-                            width={64}
-                            height={64}
-                            src={Logo.src}
-                            alt="Make UTD Logo"
-                        />
-                    </IconButton>
-                    <Typography
-                        variant="h4"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
-                        sx={{
-                            mr: 2,
-                            display: { xs: "flex", md: "none" },
-                            flexGrow: 1,
-                            fontFamily: "monospace",
-                            fontWeight: 700,
-                            letterSpacing: ".3rem",
-                            color: "inherit",
-                            textDecoration: "none",
-                        }}
-                    >
-                        MAKE UTD
-                    </Typography>
-                    <Box
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: "none", md: "flex" },
-                        }}
-                    >
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{
-                                    my: 2,
-                                    color: "white",
-                                    display: "block",
-                                    mx: 4,
-                                }}
-                                variant="contained"
-                                className="hover:bg-green-700 rounded-full"
-                            >
-                                {page}
-                            </Button>
-                        ))}
-                    </Box>
+            <div className="mx-auto w-0 invisible md:min-w-[625px] md:visible">
+                <Menu
+                    mode="horizontal"
+                    theme="dark"
+                    items={items}
+                    className="flex items-center justify-between"
+                />
+            </div>
 
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton
-                                onClick={handleOpenUserMenu}
-                                sx={{ p: 0 }}
-                            >
-                                <Avatar
-                                    alt="Example User"
-                                    src="/static/images/avatar/2.jpg"
-                                />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: "45px" }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: "top",
-                                horizontal: "right",
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem
-                                    key={setting}
-                                    onClick={handleCloseUserMenu}
-                                >
-                                    <Typography textAlign="center">
-                                        {setting}
-                                    </Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
-                </Toolbar>
-            </Container>
-        </AppBar>
+            <div className="w-0 invisible md:min-w-[50px] md:visible ml-auto mr-4">
+                <Avatar shape="circle" size="large" icon={<UserOutlined />} />
+            </div>
+
+            <div className="block ml-auto md:hidden">
+                <Button
+                    type="primary"
+                    onClick={() => setNavbarToggle(!navbarToggle)}
+                    className=" text-white"
+                >
+                    {navbarToggle ? (
+                        <MenuUnfoldOutlined />
+                    ) : (
+                        <MenuFoldOutlined />
+                    )}
+                </Button>
+
+                {navbarToggle && (
+                    <Menu
+                        mode="inline"
+                        theme="dark"
+                        items={items}
+                        className="bg-wh-900 absolute top-20 right-0 z-[9999] w-full"
+                    />
+                )}
+            </div>
+        </nav>
     );
 };
 
