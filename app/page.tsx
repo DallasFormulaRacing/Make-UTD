@@ -3,6 +3,7 @@ import tempHomeImage from "public/temp_home.png";
 import Navbar from "./(Shared-Components)/Navbar";
 import About from "./(home)/About";
 import Challenges from "./(home)/Challenges";
+import FAQ from "./(home)/FAQ";
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             </div>
             <About />
             <Challenges />
+            <FAQ />
         </main>
     );
 }
