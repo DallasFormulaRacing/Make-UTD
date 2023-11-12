@@ -50,10 +50,10 @@ module.exports = {
         plugin(function ({ addComponents }: { addComponents: Function }) {
             addComponents({
                 ".navbarLink": {
-                    color: "#FFFFFF",
-                    opacity: 0.65,
+                    color: "#498E94",
+                    opacity: 100,
                     "&:hover": {
-                        color: "#E87500",
+                        color: "#E20000",
                         underline: true,
                         opacity: 1,
                     },

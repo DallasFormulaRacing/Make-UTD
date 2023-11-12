@@ -6,6 +6,7 @@ import Navbar from "./(Shared-Components)/Navbar";
 import StyledComponentsRegistry from "../lib/AntdRegistry";
 
 import "./globals.css";
+import Footer from "./(Shared-Components)/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ const antDCustomizeTheme = {
             horizontalLineHeight: "0px",
             // darkItemBg: "#0F0F0F",
             darkItemBg: "transparent",
-            darkItemHoverColor: "#ff841c",
+            darkItemHoverColor: "#e20000",
         },
     },
 };
@@ -33,8 +34,9 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
         <body className={inter.className}>
             <StyledComponentsRegistry>
                 <ConfigProvider theme={antDCustomizeTheme}>
-                    {/* <Navbar /> */}
+                    <Navbar />
                     {children}
+                    <Footer />
                 </ConfigProvider>
             </StyledComponentsRegistry>
         </body>

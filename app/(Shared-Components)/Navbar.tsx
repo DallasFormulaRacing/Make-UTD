@@ -79,7 +79,7 @@ const items: MenuProps["items"] = [
 const Navbar = (props: Props) => {
     const [navbarToggle, setNavbarToggle] = useState<boolean>(false);
     return (
-        <nav className="navbar px-4 py-4 backdrop-blur-md">
+        <nav className="navbarStyle px-4 py-4 backdrop-blur-lg bg-black">
             <div className="basis-1/6 relative w-auto h-24">
                 <Link href="/" rel="noreferrer">
                     <Image
@@ -98,7 +98,7 @@ const Navbar = (props: Props) => {
                     mode="horizontal"
                     theme="dark"
                     items={items}
-                    className="flex items-center justify-between"
+                    className="flex items-center justify-between text-secondary-blue text-xl"
                 />
             </div>
 
@@ -110,7 +110,7 @@ const Navbar = (props: Props) => {
                 <Button
                     type="primary"
                     onClick={() => setNavbarToggle(!navbarToggle)}
-                    className=" text-white"
+                    className=" text-secondary-blue"
                 >
                     {navbarToggle ? (
                         <MenuUnfoldOutlined />
@@ -124,7 +124,7 @@ const Navbar = (props: Props) => {
                         mode="inline"
                         theme="dark"
                         items={items}
-                        className="bg-wh-900 absolute top-20 right-0 z-[9999] w-full"
+                        className="bg-wh-900 absolute top-20 right-0 z-[9999] w-full text-secondary-blue"
                     />
                 )}
             </div>
