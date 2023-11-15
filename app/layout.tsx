@@ -16,9 +16,7 @@ export const metadata = {
 };
 
 const antDCustomizeTheme = {
-    token: {
-        colorPrimary: "#2D8B49",
-    },
+    token: {},
     components: {
         Menu: {
             horizontalLineHeight: "0px",
@@ -31,10 +29,15 @@ const antDCustomizeTheme = {
 
 const RootLayout = ({ children }: React.PropsWithChildren) => (
     <html lang="en">
-        <body className={inter.className}>
+        <body
+            className={`${inter.className} bg-gray-50 text-gray-950 relative`}
+        >
+            <div className="bg-[#498e942e] absolute top-[-6rem] right-[20rem] h-[31.25rem] w-[31.25rem] -z-10 rounded-full blur-[10rem] sm:w[68.75rem]"></div>
+            <div className="bg-[#e2000011] absolute top-[-1rem] left-[-30rem] h-[31.25rem] w-[50rem] -z-10 rounded-full blur-[10rem] sm:w[68.75rem] md:left-[-22rem] lg:left-[-15rem] xl:left-[-5rem] 2xl:left-[5rem]"></div>
             <StyledComponentsRegistry>
                 <ConfigProvider theme={antDCustomizeTheme}>
                     <Navbar />
+
                     {children}
                     <Footer />
                 </ConfigProvider>

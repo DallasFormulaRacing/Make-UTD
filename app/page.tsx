@@ -7,9 +7,10 @@ import FAQ from "./(home)/FAQ";
 
 export default function Home() {
     return (
-        <main className="bg-[#000035]">
+        <main className="">
             {/* <Navbar /> */}
-            <div className="relative h-[100svh] bg-[url('../public/temp_space_home.jpg')] bg-cover" />
+            <div className="relative h-[100svh]" />
+
             <About />
             <Challenges />
             <FAQ />

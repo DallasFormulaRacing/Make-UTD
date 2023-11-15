@@ -8,7 +8,6 @@ import {
     LinkedinFilled,
 } from "@ant-design/icons";
 
-
 const SOCIAL_MEDIA = [
     {
         href: "https://www.linkedin.com/company/dallas-formula-racing/",
@@ -32,7 +31,7 @@ const Footer = () => {
     return (
         <footer
             className={
-                "bg-[#000035] text-wh-50 py-24 px-10 flex justify-center items-center min-h-[200px]"
+                "py-24 px-10 flex justify-center items-center min-h-[200px]"
             }
         >
             <div className="w-full gap-24 md:gap-8 pb-24 grid grid-cols-1 md:w-3/5 sm:grid-cols-2 md:grid-cols-4">

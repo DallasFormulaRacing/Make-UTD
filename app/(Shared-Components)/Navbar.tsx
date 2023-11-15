@@ -7,6 +7,7 @@ import DFRLogo from "public/icon.png";
 import tempLogo from "public/temp_logo.png";
 import type { MenuProps } from "antd";
 import { Menu, Button, Avatar } from "antd";
+import { motion } from "framer-motion";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
@@ -79,34 +80,56 @@ const items: MenuProps["items"] = [
 const Navbar = (props: Props) => {
     const [navbarToggle, setNavbarToggle] = useState<boolean>(false);
     return (
-        <nav className="navbarStyle px-4 py-4 backdrop-blur-lg bg-black">
-            <div className="basis-1/6 relative w-auto h-24">
-                <Link href="/" rel="noreferrer">
-                    <Image
-                        fill
-                        alt="logo"
-                        placeholder="blur"
-                        src={tempLogo}
-                        className="object-contain"
-                        style={{ clipPath: "circle()" }}
+        <header className="z-[999] relative invisible md:visible">
+            <motion.div
+                className="headerDiv md:w-1/2 sm:w-[36rem]"
+                initial={{ y: -100, x: "-50%", opacity: 0 }}
+                animate={{ y: 0, x: "-50%", opacity: 1 }}
+            ></motion.div>
+            <nav className="navbarStyle">
+                {/* <motion.div
+                    className="basis-1/6 w-auto align-left"
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                >
+                    <Link href="/" rel="noreferrer">
+                        <Image
+                            fill
+                            alt="logo"
+                            placeholder="blur"
+                            src={tempLogo}
+                            className="object-contain"
+                            style={{ clipPath: "circle()" }}
+                        />
+                    </Link>
+                </motion.div> */}
+
+                <motion.div
+                    className="mx-auto md:min-w-[500px] md:visible invisible w-0"
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                >
+                    <Menu
+                        mode="horizontal"
+                        theme="dark"
+                        items={items}
+                        className="flex items-center justify-between text-secondary-blue text-lg transition px-3 py-2"
                     />
-                </Link>
-            </div>
+                </motion.div>
 
-            <div className="mx-auto w-0 invisible md:min-w-[625px] md:visible">
-                <Menu
-                    mode="horizontal"
-                    theme="dark"
-                    items={items}
-                    className="flex items-center justify-between text-secondary-blue text-xl"
-                />
-            </div>
-
-            <div className="w-0 invisible md:min-w-[50px] md:visible ml-auto mr-4">
-                <Avatar shape="circle" size="large" icon={<UserOutlined />} />
-            </div>
-
-            <div className="block ml-auto md:hidden">
+                <motion.div
+                    className="w-0 invisible md:min-w-[50px] md:visible ml-auto mr-4"
+                    initial={{ y: -100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                >
+                    <Avatar
+                        shape="circle"
+                        size="large"
+                        icon={<UserOutlined />}
+                    />
+                </motion.div>
+            </nav>
+            <div className="block ml-auto md:hidden fixed visible">
                 <Button
                     type="primary"
                     onClick={() => setNavbarToggle(!navbarToggle)}
@@ -124,11 +147,11 @@ const Navbar = (props: Props) => {
                         mode="inline"
                         theme="dark"
                         items={items}
-                        className="bg-wh-900 absolute top-20 right-0 z-[9999] w-full text-secondary-blue"
+                        className="bg-black right-0 z-[9999] w-full text-secondary-blue transition"
                     />
                 )}
             </div>
-        </nav>
+        </header>
     );
 };
 
